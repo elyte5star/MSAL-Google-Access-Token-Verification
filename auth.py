@@ -300,4 +300,12 @@ class OAuth2CodeBearer(SecurityBase):
                     minutes=60
                 )  # Fetch keys every 1hr
         return self.public_keys_cache[auth_method]
+
+
+msal_security = OAuth2CodeBearer(
+    authorization_url=cfg.msal_auth_url,
+    token_url=cfg.msal_token_url,
+    auth_method="MSAL",
+    scopes=cfg.msal_scopes,
+)
  
